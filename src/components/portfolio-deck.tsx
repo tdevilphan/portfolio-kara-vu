@@ -26,7 +26,7 @@ import {
     Video,
 } from 'lucide-react';
 
-import { experiences, profile, skillGroups, works } from '@/data/portfolio';
+import { experiences, profile, works } from '@/data/portfolio';
 import { trackEvent } from '@/lib/analytics';
 import { createMailto, createZaloUrl } from '@/lib/links';
 
@@ -234,8 +234,8 @@ export function PortfolioDeck() {
                 </div>
 
                 <div className='flex flex-col justify-center'>
-                    <div className='motion-greeting w-fit'>
-                        <p className='text-xl font-black uppercase'>
+                    <div className='w-fit'>
+                        <p className='motion-greeting text-xl font-black uppercase'>
                             Hello{' '}
                             <span className='motion-greeting-hand inline-block'>
                                 👋
@@ -295,8 +295,8 @@ export function PortfolioDeck() {
                 className='mx-auto grid max-w-[1440px] gap-8 px-5 py-10 md:grid-cols-[0.9fr_1.1fr] md:px-8'
                 data-clarity-label='experience'
             >
-                <div>
-                    <div className='mb-10'>
+                <div className='flex flex-col'>
+                    <div className='mb-[150px]'>
                         <h2 className='work-heading mb-6'>
                             Education
                         </h2>
@@ -308,7 +308,7 @@ export function PortfolioDeck() {
                         </p>
                     </div>
 
-                    <div className='mb-10'>
+                    <div className='mb-[150px]'>
                         <h2 className='work-heading mb-6'>
                             Certification
                         </h2>
@@ -320,25 +320,90 @@ export function PortfolioDeck() {
                         </p>
                     </div>
 
-                    <h2 className='work-heading mb-8'>
-                        Tool Stack
-                    </h2>
+                    <div className='mb-[150px]'>
+                        <h2 className='work-heading mb-8'>
+                            Tool Stack
+                        </h2>
 
-                    <h2 className='work-heading mb-8 mt-10'>
-                        Skills
-                    </h2>
-                    <div className='grid gap-3'>
-                        {skillGroups.map((group) => (
-                            <div
-                                key={group.title}
-                                className='rounded-2xl bg-neutral-100 p-4'
-                            >
-                                <p className='font-black'>{group.title}</p>
-                                <p className='mt-2 text-sm text-neutral-700'>
-                                    {group.skills.join(' • ')}
-                                </p>
+                    <div className='grid grid-cols-2 gap-x-5 gap-y-8'>
+                        {[
+                            {
+                                label: 'Content Production',
+                                tools: [
+                                    { name: 'CapCut', src: '/assets/images/capcut.jpeg' },
+                                    { name: 'Canva', src: '/assets/images/canva.jpeg' },
+                                ],
+                            },
+                            {
+                                label: 'Performance',
+                                tools: [
+                                    { name: 'Facebook Ads', src: '/assets/images/facebookAds.jpeg' },
+                                    { name: 'Mailchimp', src: '/assets/images/mailchimp.jpeg' },
+                                ],
+                            },
+                            {
+                                label: 'Website Optimization',
+                                tools: [
+                                    { name: 'Google Search Console', src: '/assets/images/googleSearchConsole.jpeg' },
+                                    { name: 'Google Tag Manager', src: '/assets/images/googleTagManager.jpeg' },
+                                    { name: 'Google Trends', src: '/assets/images/googleTrends.jpeg' },
+                                    { name: 'SEO', src: '/assets/images/seo.jpeg' },
+                                    { name: 'Google Analytics', src: '/assets/images/googleAnalytics.jpeg' },
+                                    { name: 'ahrefs', src: '/assets/images/ahrefs.jpeg' },
+                                ],
+                            },
+                            {
+                                label: 'AI Agents',
+                                tools: [
+                                    { name: 'Claude', src: '/assets/images/Claude.jpeg' },
+                                    { name: 'ChatGPT', src: '/assets/images/chatGPT.jpeg' },
+                                    { name: 'Gemini', src: '/assets/images/Gemini.jpeg' },
+                                    { name: 'NotebookLM', src: '/assets/images/noteBookLM.jpeg' },
+                                ],
+                            },
+                        ].map((group) => (
+                            <div key={group.label}>
+                                <div className='w-4/5 rounded-2xl border-2 border-ink bg-white px-4 py-4 shadow-[5px_5px_0px_#1a4d3e]'>
+                                    <p className='text-center font-black text-base leading-tight'>{group.label}</p>
+                                </div>
+                                <div className='mt-6 flex w-4/5 flex-wrap justify-center gap-3'>
+                                    {group.tools.map((tool) => (
+                                        <div key={tool.name} className='h-16 w-16 overflow-hidden rounded-2xl bg-white'>
+                                            <Image
+                                                src={tool.src}
+                                                alt={tool.name}
+                                                width={64}
+                                                height={64}
+                                                className='h-full w-full object-contain'
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
                         ))}
+                    </div>
+                    </div>
+
+                    <div>
+                        <h2 className='work-heading mb-8'>
+                            Languages
+                        </h2>
+                        <div className='flex gap-4'>
+                            <Image
+                                src='/assets/images/vn.jpeg'
+                                alt='Vietnamese'
+                                width={64}
+                                height={64}
+                                className='rounded-2xl object-contain'
+                            />
+                            <Image
+                                src='/assets/images/eng.jpeg'
+                                alt='English'
+                                width={64}
+                                height={64}
+                                className='rounded-2xl object-contain'
+                            />
+                        </div>
                     </div>
                 </div>
 
@@ -374,15 +439,15 @@ export function PortfolioDeck() {
                 </div>
             </section>
 
-            <section className='border-y-8 border-primary bg-black px-5 py-14 text-white md:px-8'>
+            <section className='border-y-8 border-primary bg-white px-5 py-14 text-ink md:px-8'>
                 <div className='mx-auto grid max-w-[1440px] gap-8 md:grid-cols-[0.9fr_1.1fr]'>
-                    <div className='grid gap-3'>
-                        {[1, 2, 3].map((item) => (
-                            <div
-                                key={item}
-                                className='min-h-48 rounded-none bg-gradient-to-r from-neutral-900 to-neutral-700'
-                            />
-                        ))}
+                    <div className='relative min-h-[520px] overflow-hidden rounded-[36px]'>
+                        <Image
+                            src='/assets/images/avtBinh.jpg'
+                            alt='Vu Thi Bich Ngoc'
+                            fill
+                            className='object-contain object-top'
+                        />
                     </div>
                     <div className='flex flex-col justify-center'>
                         <p className='text-7xl font-black uppercase leading-none text-primary [writing-mode:vertical-rl] md:absolute'>
