@@ -1,0 +1,13 @@
+node_modules
+.next
+out
+.env
+.env*.local
+.vercel
+.DS_Store
+.superpowers/
+playwright-report/
+test-results/
+*.mp4
+*.mov
+*.webm
