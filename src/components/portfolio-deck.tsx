@@ -23,7 +23,6 @@ import {
     Target,
     TrendingUp,
     UserRound,
-    Video,
 } from 'lucide-react';
 
 import { experiences, profile, works } from '@/data/portfolio';
@@ -454,40 +453,46 @@ export function PortfolioDeck() {
                             Achievement
                         </p>
                         <div className='ml-0 md:ml-44'>
-                            <h2 className='text-4xl font-black'>
-                                Best Staff of the Month
-                            </h2>
-                            <div className='mt-8 grid gap-4 sm:grid-cols-3'>
-                                <div className='bg-pink-100 p-5 text-center font-black text-ink'>
-                                    15
-                                    <br />
-                                    B2B leads / month
+                            <div className='flex items-center gap-3'>
+                                <Image
+                                    src='/assets/images/medal.png'
+                                    alt='Medal'
+                                    width={120}
+                                    height={120}
+                                    className='object-contain'
+                                />
+                                <h2 className='text-4xl font-black'>
+                                    Best Staff of the Month
+                                </h2>
+                            </div>
+                            <div className='mt-8 flex gap-4'>
+                                <div className='relative h-48 flex-1 overflow-hidden rounded-2xl'>
+                                    <Image
+                                        src='/assets/images/beststaff1.jpeg'
+                                        alt='Best Staff 1'
+                                        fill
+                                        className='object-contain'
+                                    />
                                 </div>
-                                <div className='bg-green-100 p-5 text-center font-black text-ink'>
-                                    +1.3K
-                                    <br />
-                                    Organic LinkedIn followers
-                                </div>
-                                <div className='bg-white p-5 text-center font-black text-ink'>
-                                    KPI
-                                    <br />
-                                    Placeholder
+                                <div className='relative h-48 flex-1 overflow-hidden rounded-2xl'>
+                                    <Image
+                                        src='/assets/images/beststaff2.jpeg'
+                                        alt='Best Staff 2'
+                                        fill
+                                        className='object-contain'
+                                    />
                                 </div>
                             </div>
                             <div className='mt-8 rounded-2xl bg-white p-5 text-ink'>
-                                <p className='font-black'>
-                                    Content Performance
-                                </p>
-                                <div className='mt-4 grid gap-3 sm:grid-cols-3'>
-                                    <div className='rounded-xl bg-neutral-100 p-4'>
-                                        329.3K
-                                    </div>
-                                    <div className='rounded-xl bg-neutral-100 p-4'>
-                                        1.9K
-                                    </div>
-                                    <div className='rounded-xl bg-neutral-100 p-4'>
-                                        9.1K
-                                    </div>
+                                <p className='text-2xl font-black'>Content Performance</p>
+                                <div className='mt-4 overflow-hidden rounded-xl'>
+                                    <Image
+                                        src='/assets/images/contentPer.jpeg'
+                                        alt='Content Performance'
+                                        width={600}
+                                        height={400}
+                                        className='w-full object-contain'
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -497,29 +502,30 @@ export function PortfolioDeck() {
 
             <section className='bg-neutral-200 px-5 py-16 md:px-8'>
                 <div className='mx-auto max-w-[1440px]'>
-                    <SectionRule label='Table Of Content' />
+                    <SectionRule label='Highlight Experiences' />
                     <h2 className='text-center text-5xl font-black md:text-7xl'>
-                        Table <span className='text-yellow-500'>of</span>{' '}
-                        Content.
+                        Highlight{' '}
+                        <span className='text-primary'>Experiences</span>
                     </h2>
                     <div className='mt-12 grid gap-5 md:grid-cols-4'>
                         {[
-                            ['Graphic Design', Brush],
-                            ['Photographer', Camera],
-                            ['Videographer', Video],
-                            ['Marketing Tools', Code2],
-                        ].map(([label, Icon]) => {
+                            ['Content Strategy & Production', Brush, '01.'],
+                            ['Brand Positioning', Target, '02.'],
+                            ['Email Marketing', Mail, '03.'],
+                            ['Paid Media & Advertising', Megaphone, '04.'],
+                        ].map(([label, Icon, number]) => {
                             const TypedIcon = Icon as typeof Brush;
                             return (
                                 <div
                                     key={label as string}
-                                    className='rounded-[32px] bg-yellow-500 p-8 text-center font-black shadow-sticker'
+                                    className='rounded-[32px] bg-[#dd2241] p-8 text-center font-black text-white shadow-sticker'
                                 >
+                                    <p className='mb-2 text-lg opacity-80'>{number as string}</p>
                                     <TypedIcon
                                         className='mx-auto mb-4'
                                         size={52}
                                     />
-                                    {label as string}
+                                    <span className='text-xl'>{label as string}</span>
                                 </div>
                             );
                         })}
